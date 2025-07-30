@@ -1,0 +1,156 @@
+{
+  "timetable": {
+    "institution": "International Institute of Professional Studies, Devi Ahilya University, Indore",
+    "course": "MCA Semester V (Section A)",
+    "semester_period": "July-Dec 2025",
+    "room": "201",
+    "schedule": {
+      "Monday-Tuesday": {
+        "10:00-11:00": {
+          "code": "IC-501D",
+          "subject": "Python",
+          "type": "theory"
+        },
+        "11:00-12:00": {
+          "code": "IC-502C",
+          "subject": "Introduction to Data Science",
+          "type": "theory"
+        },
+        "12:00-13:00": {
+          "code": "IC-503A",
+          "subject": "Computer Graphics & Multimedia",
+          "type": "theory"
+        },
+        "13:00-15:00": {
+          "code": "IC-507E",
+          "subject": "Python Lab",
+          "type": "lab"
+        }
+      },
+      "Wednesday-Thursday": {
+        "09:00-10:00": {
+          "code": "IC-501D",
+          "subject": "Python",
+          "type": "theory"
+        },
+        "10:00-11:00": {
+          "code": "IC-502C",
+          "subject": "Introduction to Data Science",
+          "type": "theory"
+        },
+        "11:00-12:00": {
+          "code": "IC-512B",
+          "subject": "Computer Oriented Numerical Methods",
+          "type": "theory"
+        },
+        "12:00-13:00": {
+          "code": "IC-504A",
+          "subject": "System Programming",
+          "type": "theory"
+        }
+      },
+      "Friday-Saturday": {
+        "10:00-11:00": {
+          "code": "IC-512B",
+          "subject": "Computer Oriented Numerical Methods",
+          "type": "theory"
+        },
+        "11:00-12:00": {
+          "code": "IC-504A",
+          "subject": "System Programming",
+          "type": "theory"
+        },
+        "12:00-13:00": {
+          "code": "IC-503A",
+          "subject": "Computer Graphics & Multimedia",
+          "type": "theory"
+        },
+        "13:00-15:00": {
+          "code": "IC-508E",
+          "subject": "Computer Graphics & Multimedia Lab",
+          "type": "lab"
+        }
+      }
+    }
+  },
+  "faculty": {
+    "IC-504A": {
+      "subject": "System Programming",
+      "faculty": "Ms Kirti Vijayvargiya"
+    },
+    "IC-501D": {
+      "subject": "Programming with Python",
+      "faculty": "Mr Ajay Umale"
+    },
+    "IC-502C": {
+      "subject": "Introduction to Data Science",
+      "faculty": "Dr Shaligram Prajapat"
+    },
+    "IC-503A": {
+      "subject": "Computer Graphics & Multimedia",
+      "faculty": "Dr. Basant Namdeo"
+    },
+    "IC-512B": {
+      "subject": "Computer Oriented Numerical Methods",
+      "faculty": "Dr Rupesh Sendre"
+    },
+    "IC-507E": {
+      "subject": "Python Lab",
+      "faculty": "Mr Dheeraj Upadhyay"
+    },
+    "IC-508E": {
+      "subject": "Computer Graphics & Multimedia Lab",
+      "faculty": "Mr Dheeraj Upadhyay"
+    }
+  },
+  "academic_calendar": {
+    "semester_type": "Odd Semester (I/III/V/VII/IX)",
+    "admission_start": "2025-07-01",
+    "admission_end": "2025-07-07",
+    "classes_start": "2025-07-08",
+    "classes_end": "2025-11-08",
+    "class_test_1": {
+      "dates": "2025-08-20 to 2025-08-25",
+      "result_display": "2025-08-31"
+    },
+    "class_test_2": {
+      "dates": "2025-10-06 to 2025-10-11",
+      "result_display": "2025-10-16"
+    },
+    "diwali_vacation": "2025-10-18 to 2025-10-23",
+    "class_test_3": {
+      "dates": "2025-11-10 to 2025-11-14",
+      "result_display": "2025-11-20"
+    },
+    "preparation_leave": "2025-11-15 to 2025-11-24",
+    "end_sem_exam": "2025-11-25 to 2025-12-15",
+    "result_declaration": "2025-12-22",
+    "semester_break": "2025-12-16 to 2025-12-31"
+  },
+  "calculations": {
+    "days": {
+      "total_semester_days": 124,
+      "vacation_days": 6,
+      "effective_working_days": 101,
+      "approximate_weeks": 16
+    },
+    "weekly_classes": {
+      "IC-501D": 4,
+      "IC-502C": 4,
+      "IC-503A": 4,
+      "IC-507E": 2,
+      "IC-512B": 4,
+      "IC-504A": 4,
+      "IC-508E": 2
+    },
+    "total_semester_classes": {
+      "IC-501D": 64,
+      "IC-502C": 64,
+      "IC-503A": 64,
+      "IC-507E": 32,
+      "IC-512B": 64,
+      "IC-504A": 64,
+      "IC-508E": 32
+    }
+  }
+}

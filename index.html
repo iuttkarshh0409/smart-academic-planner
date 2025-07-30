@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCA Academic Planner - Semester V | IIPS, DAVV Indore</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <h2>MCA Academic Planner</h2>
+                <p class="university-info">IIPS, Devi Ahilya University, Indore</p>
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+                <button class="nav-tab" data-tab="timetable">Timetable</button>
+                <button class="nav-tab" data-tab="attendance">Attendance</button>
+                <button class="nav-tab" data-tab="bunk-calculator">Bunk Calculator</button>
+                <button class="nav-tab" data-tab="calendar">Calendar</button>
+                <button class="nav-tab" data-tab="analytics">Analytics</button>
+            </div>
+        </nav>
+
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content active">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>Welcome to Semester V!</h1>
+                    <div class="student-info">
+                        <div class="info-card">
+                            <span class="info-label">Course:</span>
+                            <span class="info-value">MCA Semester V (Section A)</span>
+                        </div>
+                        <div class="info-card">
+                            <span class="info-label">Room:</span>
+                            <span class="info-value">201</span>
+                        </div>
+                        <div class="info-card">
+                            <span class="info-label">Semester:</span>
+                            <span class="info-value">July-Dec 2025</span>
+                        </div>
+                        <div class="info-card">
+                            <span class="info-label">Current Date:</span>
+                            <span class="info-value" id="currentDate"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <h3 id="overallAttendance">85%</h3>
+                            <p>Overall Attendance</p>
+                            <small id="attendanceStatus" class="status-text">Above Target</small>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📚</div>
+                        <div class="stat-info">
+                            <h3 id="todayClasses">4</h3>
+                            <p>Today's Classes</p>
+                            <small id="nextClass">Next: Python at 10:00</small>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-info">
+                            <h3 id="lowAttendanceCount">1</h3>
+                            <p>Low Attendance Subjects</p>
+                            <small>Need attention</small>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <h3 id="safeBunks">12</h3>
+                            <p>Safe Bunks Available</p>
+                            <small>Across all subjects</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="today-schedule-card">
+                        <h3>Today's Schedule</h3>
+                        <div id="todaySchedule" class="schedule-list">
+                            <!-- Today's classes will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="quick-actions-card">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions">
+                            <button class="action-btn" id="markAllPresentBtn">
+                                <span class="action-icon">✅</span>
+                                Mark All Present
+                            </button>
+                            <button class="action-btn" id="viewBunksBtn">
+                                <span class="action-icon">📊</span>
+                                View Bunk Analysis
+                            </button>
+                            <button class="action-btn" id="exportDataBtn">
+                                <span class="action-icon">📤</span>
+                                Export Reports
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="semester-progress">
+                    <h3>Semester Progress</h3>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="semesterProgress" style="width: 25%"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span id="progressText">Week 4 of 16 weeks</span>
+                            <span id="daysRemaining">95 days remaining</span>
+                        </div>
+                    </div>
+                    <div class="upcoming-events">
+                        <h4>Upcoming Events</h4>
+                        <div id="upcomingEvents" class="events-list">
+                            <!-- Events will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timetable Tab -->
+        <div id="timetable" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Weekly Timetable</h2>
+                    <div class="timetable-controls">
+                        <button class="btn btn--secondary" id="printTimetableBtn">Print Timetable</button>
+                        <button class="btn btn--primary" id="exportTimetableBtn">Export to Calendar</button>
+                    </div>
+                </div>
+
+                <div class="timetable-container">
+                    <div class="timetable-days">
+                        <button class="day-tab active" data-day="monday-tuesday">Monday-Tuesday</button>
+                        <button class="day-tab" data-day="wednesday-thursday">Wednesday-Thursday</button>
+                        <button class="day-tab" data-day="friday-saturday">Friday-Saturday</button>
+                    </div>
+                    
+                    <div id="timetableGrid" class="timetable-grid">
+                        <!-- Timetable will be populated here -->
+                    </div>
+                </div>
+
+                <div class="subjects-info">
+                    <h3>Subject Information</h3>
+                    <div id="subjectsGrid" class="subjects-grid">
+                        <!-- Subject cards will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance Tab -->
+        <div id="attendance" class="tab-content">
+            <div class="container">
+                <h2>Smart Attendance Tracker</h2>
+                
+                <div class="attendance-summary">
+                    <div class="summary-card overall">
+                        <h3>Overall Status</h3>
+                        <div class="overall-stats">
+                            <div class="stat">
+                                <span class="stat-value" id="totalClasses">0</span>
+                                <span class="stat-label">Total Classes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="attendedClasses">0</span>
+                                <span class="stat-label">Attended</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="overallPercentage">0%</span>
+                                <span class="stat-label">Percentage</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="attendanceSubjects" class="attendance-subjects">
+                    <!-- Subject attendance cards will be populated here -->
+                </div>
+
+                <div class="attendance-actions">
+                    <h3>Mark Today's Attendance</h3>
+                    <div id="todayAttendance" class="today-attendance">
+                        <!-- Today's attendance marking will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bunk Calculator Tab -->
+        <div id="bunk-calculator" class="tab-content">
+            <div class="container">
+                <h2>Bunk Calculator & Strategy Planner</h2>
+                
+                <div class="calculator-header">
+                    <div class="target-setting">
+                        <label for="targetAttendance" class="form-label">Target Attendance (%)</label>
+                        <input type="number" id="targetAttendance" class="form-control" value="75" min="0" max="100">
+                        <small>University minimum requirement: 75%</small>
+                    </div>
+                </div>
+
+                <div id="bunkCalculations" class="bunk-calculations">
+                    <!-- Bunk calculations will be populated here -->
+                </div>
+
+                <div class="strategy-recommendations">
+                    <h3>Strategic Recommendations</h3>
+                    <div id="recommendations" class="recommendations-list">
+                        <!-- Recommendations will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Tab -->
+        <div id="calendar" class="tab-content">
+            <div class="container">
+                <h2>Academic Calendar - Odd Semester 2025</h2>
+                
+                <div class="calendar-overview">
+                    <div class="semester-timeline">
+                        <h3>Semester Timeline</h3>
+                        <div class="timeline" id="semesterTimeline">
+                            <!-- Timeline will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="important-dates">
+                        <h3>Important Dates</h3>
+                        <div id="importantDates" class="dates-list">
+                            <!-- Important dates will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar-controls">
+                    <button class="btn btn--primary" id="exportCalendarBtn">Export to Google Calendar</button>
+                    <button class="btn btn--secondary" id="setReminderBtn">Set Exam Reminders</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div id="analytics" class="tab-content">
+            <div class="container">
+                <h2>Visual Analytics & Reports</h2>
+                
+                <div class="analytics-grid">
+                    <div class="chart-card">
+                        <h3>Weekly Class Distribution</h3>
+                        <div class="chart-image">
+                            <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/caca228b83f6b5b21434de8be1eaf1e2/7bd37e72-5b5a-4a97-a1d1-df212e772248/72f44f86.png" alt="Weekly Class Distribution" class="analytics-chart">
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Attendance Analysis</h3>
+                        <div class="chart-image">
+                            <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/caca228b83f6b5b21434de8be1eaf1e2/3fc4291c-eb91-4c52-a654-dcfe0ba306f0/2fbf3d1d.png" alt="Attendance Analysis" class="analytics-chart">
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Real-time Attendance Chart</h3>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="liveAttendanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Semester Progress</h3>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <h3>Export Reports</h3>
+                    <div class="export-buttons">
+                        <button class="btn btn--primary" id="exportAttendanceBtn">Export Attendance Report</button>
+                        <button class="btn btn--secondary" id="exportTimetableReportBtn">Export Timetable Report</button>
+                        <button class="btn btn--outline" id="exportSummaryBtn">Export Semester Summary</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Access Floating Button -->
+        <div class="floating-quick-access" id="quickAccessBtn">
+            <span class="quick-icon">⚡</span>
+            <div class="quick-menu hidden" id="quickMenu">
+                <button class="quick-menu-item" data-action="mark-present">✅ Mark Present</button>
+                <button class="quick-menu-item" data-action="mark-absent">❌ Mark Absent</button>
+                <button class="quick-menu-item" data-action="view-bunks">📊 View Bunks</button>
+                <button class="quick-menu-item" data-action="next-class">🕐 Next Class</button>
+            </div>
+        </div>
+
+        <!-- Export Modal -->
+        <div id="exportModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Export Data</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="export-options">
+                        <label class="export-option">
+                            <input type="checkbox" name="exportType" value="attendance" checked>
+                            <span>Attendance Records</span>
+                        </label>
+                        <label class="export-option">
+                            <input type="checkbox" name="exportType" value="timetable" checked>
+                            <span>Timetable</span>
+                        </label>
+                        <label class="export-option">
+                            <input type="checkbox" name="exportType" value="calendar" checked>
+                            <span>Academic Calendar</span>
+                        </label>
+                        <label class="export-option">
+                            <input type="checkbox" name="exportType" value="analytics">
+                            <span>Analytics Data</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="exportFormat" class="form-label">Export Format</label>
+                        <select id="exportFormat" class="form-control">
+                            <option value="pdf">PDF Report</option>
+                            <option value="excel">Excel Spreadsheet</option>
+                            <option value="csv">CSV Data</option>
+                            <option value="ics">Calendar (ICS)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn--secondary" id="cancelExport">Cancel</button>
+                    <button type="button" class="btn btn--primary" id="confirmExport">Export</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
